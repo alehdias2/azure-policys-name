@@ -1,0 +1,92 @@
+{
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/networkSecurityGroups"
+          },
+          {
+            "field": "name",
+            "like": "[concat('nsg-spoke', parameters('regioesPermitidas'), '-', parameters('subscriptionsPermitidas'), '-*-', parameters('matchClausesPermitidos'))]"
+          },
+          {
+            "not": {
+              "anyOf": [
+                {
+                  "field": "[parameters('regioesPermitidas')]",
+                  "notLike": "us2"
+                },
+                {
+                  "field": "[parameters('regioesPermitidas')]",
+                  "notLike": "br"
+                },
+                {
+                  "field": "[parameters('regioesPermitidas')]",
+                  "notLike": "nus"
+                },
+                {
+                  "field": "[parameters('subscriptionsPermitidas')]",
+                  "notLike": "ams"
+                },
+                {
+                  "field": "[parameters('subscriptionsPermitidas')]",
+                  "notLike": "cba"
+                },
+                {
+                  "field": "[parameters('subscriptionsPermitidas')]",
+                  "notLike": "cba"
+                },
+                {
+                  "field": "[parameters('subscriptionsPermitidas')]",
+                  "notLike": "bca"
+                },
+                {
+                  "field": "[parameters('matchClausesPermitidos')]",
+                  "notLike": "poc01"
+                },
+                {
+                  "field": "[parameters('matchClausesPermitidos')]",
+                  "notLike": "poc02"
+                },
+                {
+                  "field": "[parameters('matchClausesPermitidos')]",
+                  "notLike": "poc03"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    },
+    "parameters": {
+      "regioesPermitidas": {
+        "type": "String",
+        "metadata": {
+          "displayName": "regioesPermitidas",
+          "description": null
+        },
+        "defaultValue": "us2"
+      },
+      "subscriptionsPermitidas": {
+        "type": "String",
+        "metadata": {
+          "displayName": "subscriptionsPermitidas",
+          "description": null
+        },
+        "defaultValue": "ams"
+      },
+      "matchClausesPermitidos": {
+        "type": "String",
+        "metadata": {
+          "displayName": "matchClausesPermitidos",
+          "description": null
+        },
+        "defaultValue": "poc01"
+      }
+    }
+  }

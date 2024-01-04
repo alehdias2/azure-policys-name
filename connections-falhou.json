@@ -1,0 +1,94 @@
+{
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/connections"
+          },
+          {
+            "field": "[parameters('segmento')]",
+            "notlike": "AAA"
+          },
+          {
+            "field": "[parameters('segmento')]",
+            "notlike": "BBB"
+          },
+          {
+            "field": "[parameters('segmento')]",
+            "notlike": "CCC"
+          },
+          {
+            "field": "[parameters('segmento')]",
+            "notlike": "SAP-DDD"
+          },
+          {
+            "field": "[parameters('segmento')]",
+            "notlike": "EEE"
+          },
+          {
+            "field": "[parameters('segmento')]",
+            "notlike": "SAP-FFF"
+          },
+          {
+            "field": "[parameters('segmento')]",
+            "notlike": "SAP-GGG"
+          },
+          {
+            "field": "[parameters('regiao')]",
+            "notlike": "US2"
+          },
+          {
+            "field": "[parameters('regiao')]",
+            "notlike": "BR"
+          },
+          {
+            "field": "[parameters('regiao')]",
+            "notlike": "NUS"
+          },         
+           {
+            "field": "[parameters('ambiente')]",
+            "notlike": "01"
+          },
+          {
+            "field": "[parameters('ambiente')]",
+            "notlike": "02"
+          },
+          {
+            "field": "[parameters('ambiente')]",
+            "notlike": "03"
+          },
+          {
+            "field": "name",
+            "like": "[concat('CN-SPOKE', parameters('regiao'), '-', parameters('segmento'), '-POC', parameters('ambiente'))]"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    },
+    "parameters": {
+      "segmento": {
+        "type": "String",
+        "metadata": {
+          "displayName": "namePattern",
+          "description": "Pattern to use for names. Can include wildcard (*)."
+        }
+      },
+      "regiao": {
+        "type": "String",
+        "metadata": {
+          "displayName": "namePattern",
+          "description": "Pattern to use for names. Can include wildcard (*)."
+        }
+      }, "ambiente": {
+        "type": "String",
+        "metadata": {
+          "displayName": "namePattern",
+          "description": "Pattern to use for names. Can include wildcard (*)."
+        }
+      }
+    }
+  }

@@ -1,0 +1,78 @@
+{
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/networkSecurityGroups"
+          },
+          {
+            "not": {
+              "anyOf": [
+                {
+                  "field": "name",
+                  "like": "[concat(parameters('resourceIdentifier'), '-', parameters('resourceRegion'), '-', parameters('subscription'), parameters('matchClause'))]"
+                },
+               
+                {      
+                  "type": "string",      
+                  "value": "[or(parameters('subscription').bca, parameters('subscription').acb, parameters('subscription').cab)]"    
+                }
+              ]
+                }
+          }
+         ]
+          },
+       
+     
+   
+      "then": {
+        "effect": "deny"
+      }
+    },
+    "parameters": {
+      "resourceIdentifier": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Resource Identifier",
+          "description": "The first letters that identify the resource, according naming standards. In example, for network interfaces, 'ni', or for publicly addressed resources a unique company identifier e.g. cor Fabrikam 'fab'"
+        },
+        "defaultValue": "nsg"
+      },
+      "resourceRegion": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Region short name string",
+          "description": "A string containing region  for the naming convention, i.e., 'mel' or 'syd'. This will be concatenated as 'Resource Identifier'+'Resource Region'+'Subscription'"
+        },
+        "allowedValues": [
+          "spokebr",
+          "spokenus",
+          "spokeus2"
+        ],
+        "defaultValue": "spokebr"
+      },
+      "subscription": {
+        "type": "Object",
+        "metadata": {
+          "displayName": "Subscription short name",
+          "description": "A string containing subscription for the naming convention, i.e., 'bnd', 'cor', 'prd', 'stg', 'tst', or 'dev'. This will be concatenated as 'Resource Identifier'+'Resource Region'+'Subscription'"
+        },
+        "defaultValue":  {
+          "bba": "bca",
+          "fcb": "acb",
+          "lcb": "cba"
+        }
+      },
+      "matchClause": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Match Clause",
+          "description": "A string containing the match clause that goes in the end of the formed string, i.e., '-*'. This will be concatenated as 'Resource Identifier'+'Resource Region'+'Subscription'+'MatchClause'"
+        },
+        "defaultValue": "-*-poc01"
+      }
+    }
+  }
+   

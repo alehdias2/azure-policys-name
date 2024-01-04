@@ -1,0 +1,70 @@
+{
+"policyRule": {
+  "if": {
+      "allOf": [
+          {
+              "field": "type",
+              "equals": "Microsoft.Resources/resourceGroups" 
+          },
+          {
+          "not": {
+            "anyOf": [
+              
+                  {
+                      "field": "name",
+                      "notLike": "nsg-spokeus2-"
+                  },
+                  {
+                      "field": "name",
+                      "notLike": "nsg-spokebr-"
+                  },
+                  {
+                      "field": "name",
+                      "notLike": "nsg-spokenus-"
+                  } 
+              ]
+            }
+          }, 
+          {
+            "not": {
+              "anyOf": [
+                {
+                    "field": "name",
+                    "Like": "abc-"
+                },
+                {
+                    "field": "name",
+                    "Like": "bca-"
+                },
+                {
+                    "field": "name",
+                    "Like": "cab-"
+                }
+              ]
+            }
+            },
+          {
+            "not": {
+              "anyOf": [
+                  {
+                      "field": "name",
+                      "Like": "*-poc01"
+                  },
+                  {
+                      "field": "name",
+                      "Like": "*-poc02"
+                  },
+                  {
+                      "field": "name",
+                      "Like": "*-poc03"
+                  }
+              ]
+          }
+        }
+      ]
+  },
+  "then": {
+      "effect": "deny"
+  }
+}
+}
