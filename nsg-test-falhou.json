@@ -78,7 +78,7 @@
           "displayName": "subscriptionsPermitidas",
           "description": null
         },
-        "defaultValue": "ams"
+        "defaultValue": "aaa"
       },
       "matchClausesPermitidos": {
         "type": "String",
