@@ -1,0 +1,217 @@
+{
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/networkSecurityGroups"
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??.-???-...-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??.-???-....-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??.-???-.....-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??.-???-......-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??.-???-.......-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??.-???-........-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??.-???-.........-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??.-???-..........-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??-???-...-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??-???-....-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??-???-.....-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??-???-......-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??-???-.......-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??-???-........-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??-???-.........-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-SPOKE??-???-..........-DEV##"
+            }
+          },          
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??.-???-...-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??.-???-....-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??.-???-.....-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??.-???-......-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??.-???-.......-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??.-???-........-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??.-???-.........-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??.-???-..........-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??-???-...-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??-???-....-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??-???-.....-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??-???-......-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??-???-.......-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??-???-........-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??-???-.........-DEV##"
+            }
+          },
+          {
+            "not": {
+              "field": "[parameters('namePattern')]",
+              "match": "NSG-HUB??-???-..........-DEV##"
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    },
+    "parameters": {
+      "namePattern": {
+        "type": "String",
+        "metadata": {
+          "displayName": "namePattern",
+          "description": "Pattern to use for names. Can include wildcard (*)."
+        }
+      }
+    }
+  }
